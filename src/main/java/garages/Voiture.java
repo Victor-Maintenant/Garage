@@ -47,7 +47,7 @@ public class Voiture {
 	 * @throws java.lang.Exception si la voiture n'est pas dans un garage
 	 */
 	public void sortDuGarage() throws Exception {
-		if (this.myStationnements.getLast().getFin() != null) {
+		if (this.estDansUnGarage() == false) {
 			throw new Exception ("La voiture n'est plus dans un garage");
 		}
 		this.myStationnements.getLast().terminer();
@@ -69,7 +69,7 @@ public class Voiture {
 	 */
 	public boolean estDansUnGarage(){
 		boolean res = false;
-		if (this.myStationnements.size() == 0) {
+		if (this.myStationnements.isEmpty()) {
 			res = false;
 		}
 		else {
@@ -97,15 +97,13 @@ public class Voiture {
 	 * @param out l'endroit où imprimer (ex: System.out)
 	 */
 	public void imprimeStationnements(PrintStream out) {
-		Set<Garage> garage = new HashSet<Garage>();
-		garage = this.garagesVisites();
 		String nomG;
-		for (int i = 0;i < garage.size();i++) {
-			nomG = garage.iterator().getClass().getName();
-			System.out.println(garage.iterator().getClass().toString()+":"+'\n'+"		");
-			for(int j = 0;j < this.myStationnements.size();j++) {
-				if (this.myStationnements.get(j).getGarage().getName() != nomG){
-					System.out.println(this.myStationnements.get(j).toString());
+		for (Garage g : this.garagesVisites()) {
+			nomG = g.getName();
+			System.out.println(g.toString()+" :");
+			for(int i = 0;i < this.myStationnements.size();i++) {
+				if (this.myStationnements.get(i).getGarage().getName() == nomG){
+					System.out.println("	"+this.myStationnements.get(i).toString());
 				}
 			}
 		}

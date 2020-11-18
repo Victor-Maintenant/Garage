@@ -97,8 +97,14 @@ public class GarageTest {
 		assertEquals("Nom",g1.getName());
 		assertThrows(IllegalArgumentException.class, () -> {
             g1.setName(null);
+		});	
+	}
+	
+	@Test
+	public void testCreationVoitureSansImma() {
+		assertThrows(IllegalArgumentException.class, () -> {
+            Voiture v2 = new Voiture(null);
 		});
-		
 	}
 
 	/**
