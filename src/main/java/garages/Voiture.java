@@ -16,6 +16,11 @@ public class Voiture {
 		this.immatriculation = i;
 	}
 
+	public LinkedList<Stationnement> getMyStationnements() {
+		return myStationnements;
+	}
+
+
 	public String getImmatriculation() {
 		return immatriculation;
 	}
@@ -74,6 +79,8 @@ public class Voiture {
 		}
 		return res;
 	}
+	
+	
 
 	/**
 	 * Pour chaque garage visité, imprime le nom de ce garage suivi de la liste des dates d'entrée / sortie dans ce
@@ -103,5 +110,4 @@ public class Voiture {
 			}
 		}
 	}
-
 }

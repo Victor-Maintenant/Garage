@@ -2,8 +2,11 @@ package garages.garages;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,6 +81,24 @@ public class GarageTest {
 		} catch (Exception e) {
 			// Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
 		}
+	}
+	
+	@Test
+	public void testGetterStationnement() throws Exception {
+		v1.entreAuGarage(g1);
+		Date date = new Date();
+		assertEquals(v1,v1.getMyStationnements().getLast().getCar());
+		assertEquals(date,v1.getMyStationnements().getLast().getEntree());
+	}
+	
+	@Test
+	public void testSetterGarage() {
+		g1.setName("Nom");
+		assertEquals("Nom",g1.getName());
+		assertThrows(IllegalArgumentException.class, () -> {
+            g1.setName(null);
+		});
+		
 	}
 
 	/**
