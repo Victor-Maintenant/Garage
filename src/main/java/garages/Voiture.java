@@ -95,10 +95,10 @@ public class Voiture {
 	 */
 	public void imprimeStationnements(PrintStream out) {
 		for (Garage g : this.garagesVisites()) {
-			System.out.println(g.toString()+" :");
+			out.println(g.toString()+" :");
 			for(Stationnement s : this.myStationnements) {
 				if (s.getGarage().getName() == g.getName()){
-					System.out.println("	" + s.toString());
+					out.println("	" + s.toString());
 				}
 			}
 		}
