@@ -29,6 +29,11 @@ public class GarageTest {
 		assertFalse(v1.estDansUnGarage());
 		assertTrue(v1.garagesVisites().isEmpty());
 	}
+	
+	@Test
+	public void testGetterImmatriculation() {
+		assertEquals("123 XX 456",v1.getImmatriculation());
+	}
 
 	@Test
 	public void testEntreeGarage() throws Exception {
@@ -136,3 +141,5 @@ public class GarageTest {
 		return count;
 	}
 }
+
+

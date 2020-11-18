@@ -53,7 +53,7 @@ public class Voiture {
 	 */
 	public Set<Garage> garagesVisites() {
 		Set<Garage> garage = new HashSet<Garage>();
-		for (int i = 0;i <= this.myStationnements.size();i++) {
+		for (int i = 0;i < this.myStationnements.size();i++) {
 			garage.add(this.myStationnements.get(i).getGarage());
 		}
 		return garage;
@@ -64,8 +64,13 @@ public class Voiture {
 	 */
 	public boolean estDansUnGarage(){
 		boolean res = false;
-		if (this.myStationnements.getLast().getFin() == null) {
+		if (this.myStationnements.size() == 0) {
+			res = false;
+		}
+		else {
+			if (this.myStationnements.getLast().getFin() == null) {
 			res = true;
+			}
 		}
 		return res;
 	}
@@ -88,10 +93,10 @@ public class Voiture {
 		Set<Garage> garage = new HashSet<Garage>();
 		garage = this.garagesVisites();
 		String nomG;
-		for (int i = 0;i <= garage.size();i++) {
+		for (int i = 0;i < garage.size();i++) {
 			nomG = garage.iterator().getClass().getName();
 			System.out.println(garage.iterator().getClass().toString()+":"+'\n'+"		");
-			for(int j = 0;j <= this.myStationnements.size();j++) {
+			for(int j = 0;j < this.myStationnements.size();j++) {
 				if (this.myStationnements.get(j).getGarage().getName() != nomG){
 					System.out.println(this.myStationnements.get(j).toString());
 				}
