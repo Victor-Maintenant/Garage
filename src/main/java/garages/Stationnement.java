@@ -7,13 +7,13 @@ public class Stationnement {
 
 	private final Voiture myCar;
 	private final Garage myGarage;
-
-	private final Date entree = new Date(); // Aujourd'hui
+	private final Date entree; // Aujourd'hui
 	private Date fin;
 
 	public Stationnement(Voiture v, Garage g) {
-		myCar = v;
-		myGarage = g;
+		this.myCar = v;
+		this.myGarage = g;
+		this.entree = new Date();
 	}
 
 	public Voiture getCar() {
