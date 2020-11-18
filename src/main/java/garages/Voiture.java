@@ -27,7 +27,7 @@ public class Voiture {
 
 	/**
 	 * Fait rentrer la voiture au garage 
-         * Précondition : la voiture ne doit pas être déjà dans un garage
+     * Précondition : la voiture ne doit pas être déjà dans un garage
 	 *
 	 * @param g le garage où la voiture va stationner
 	 * @throws java.lang.Exception Si déjà dans un garage
@@ -47,7 +47,7 @@ public class Voiture {
 	 * @throws java.lang.Exception si la voiture n'est pas dans un garage
 	 */
 	public void sortDuGarage() throws Exception {
-		if (this.estDansUnGarage() == false) {
+		if (!this.estDansUnGarage()) {
 			throw new Exception ("La voiture n'est plus dans un garage");
 		}
 		this.myStationnements.getLast().terminer();
@@ -58,8 +58,8 @@ public class Voiture {
 	 */
 	public Set<Garage> garagesVisites() {
 		Set<Garage> garage = new HashSet<Garage>();
-		for (int i = 0;i < this.myStationnements.size();i++) {
-			garage.add(this.myStationnements.get(i).getGarage());
+		for (Stationnement s : this.myStationnements) {
+			garage.add(s.getGarage());
 		}
 		return garage;
 	}
@@ -69,12 +69,9 @@ public class Voiture {
 	 */
 	public boolean estDansUnGarage(){
 		boolean res = false;
-		if (this.myStationnements.isEmpty()) {
-			res = false;
-		}
-		else {
+		if (!this.myStationnements.isEmpty()) {
 			if (this.myStationnements.getLast().getFin() == null) {
-			res = true;
+				res = true;
 			}
 		}
 		return res;
